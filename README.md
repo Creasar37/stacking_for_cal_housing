@@ -1,1 +1,6 @@
-# stacking_for_cal_housing
+# 加利福尼亚住房数据集预测
+分别建立XGBoost、lightGBM、Stacking和使用原始数据的多层Stacking模型对加利福尼亚住房数据集进行训练，对XGBoost、lightGBM进行了初步网格搜索,包含随机搜索。
+## Stacking结构
+基模型分别为XGBoost、Catboost、岭回归、随机森林回归、支持向量机，回归器通常会采用简单模型，此处为复现论文，使用lightGBM作为回归器。XGBoost和lightGBM使用网格搜索过的超参数，其他模型使用默认参数。
+## 使用原始数据的多层Stacking
+第一层输出数据与原始数据拼接，输入第二层，再次使用基模型进行交叉训练，共重复三次，最后数据输入回归器。该结构来自论文《基于机器学习算法和深度学习算法的高炉炉温预测研究》。
